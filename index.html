@@ -5,74 +5,54 @@
 	<title>Lemon Chat</title>
 <style type="text/css">
 .container {
-    width: 1024px;
-    height: 400px;
-    display:table;
-    text-align: center;
-    position: relative;
+    	min-width: 1024px;
+    	width: 1024px;
+	margin: 0 auto;
+    	display: inline;
+    	text-align: center;
+   	position: absolute;
 }
-.row1 {
-    display:table-row;
-    max-height: 425px;
-    background: orange;
+.container .text-box {
+   	position: relative;
+    	background: orange;
+    	overflow: scroll;
+	height: 350px;
 }
-.row1 div {
-    display:table-cell;
-    max-height: 425px;
-    width:50%;
+
+.container .yes {
+	width: 50%;
+	float:left;
+	position: relative;
+	background-color: green;
 }
-.row2 {
-    display:table-row;
-    height: 100%;
-}
-.row2 div {
-    width: 100%;
-    height: 100%;
-    float:left;
-    background: green;
-}
-.row2 div + div {
-    background: red;
-    width: 50%;
-    height: 100%;
-    position: absolute;
-    top:0;
-    right:0;
-}
-@media (max-width: 1024px) {
-    .row1 {
-        width: 100%;
-    }
-    .row1 div + div {
-        display: none;
-    }
-    .row2 div {
-        width: 50%;
-    }
-    .row2 div + div {
-        position: static;
-    }
+.container .no {
+	width: 50%;
+	float:right;
+	position: relative;
+	background-color: red;
 }
 </style>
 	<script src="client.js"></script>
 </head>
 
 <body>
-      <form>
-        <input type="text" id="name" value="guest" style="width: 75px;" /> 
-	<input type= "text" id="message" placeholder="type message here..." style="width: 300px;" />
-        <input type="submit" onclick="send(); return false;" value="send" />
-        <button onclick="clearMessages(); return false;">clear</button>
-      </form>
-  <div class="row1">
-      <div id="messages" style="font-size: 250%; overflow-y: scroll;"> </div>
-      <div></div>
-  </div>
-
-  <div class="row2">
-     <div style="display:table-cell; vertical-align:middle; text-align:center"><img onclick="yes(); return false;" src="y.png" ></div>
-      <div style="display:table-cell; vertical-align:middle; text-align:center"><img onclick="no(); return false;" src="n.png" ></div>
-      <div></div>
-  </div>
+<div class="container">
+	<form>
+        	<input type="text" id="name" value="guest" style="width: 75px;" /> 
+		<input type= "text" id="message" placeholder="type message here..." style="width: 300px;" />
+        	<input type="submit" onclick="send(); return false;" value="send" />
+        	<button onclick="clearMessages(); return false;">clear</button>
+      	</form>
+ 	<div class="text-box">
+      		<div id="messages" style="font-size: 250%"> </div>
+      		<div></div>
+  	</div>
+	<div class="yes">
+		<div><a href="#" onclick="yes(); return false;"><img src="y.png" /></a></div>
+	</div>
+	<div class="no">
+		<div><a href="#" onclick="no(); return false;"><img src="n.png" /></a></div>
+	</div>
+</div>
 </body>
 </html>

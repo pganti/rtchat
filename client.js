@@ -24,7 +24,8 @@ function appendMessage(msg) {
   var p = document.createElement('p')
   var text = document.createTextNode(msg.name + ': ' + msg.message)
   p.appendChild(text)
-  document.getElementById('messages').appendChild(p)
+  // document.getElementById('messages').appendChild(p)
+  document.getElementById('messages').insertBefore(p, document.getElementById('messages').firstChild)
 }
 
 window.send = function() {
@@ -57,8 +58,8 @@ window.onload = function() {
   db.get('messages', function(err, messages) {
     if (messages == null) return
 
-    var ids = Object.keys(messages).slice(-15) //take last 15
-    ids.forEach(function(id) {
+    var ids = Object.keys(messages).slice(-5) // take last 4
+    ids.reverse().forEach(function(id) {
       db.get('message:' + id, function(err, data) {
         appendMessage(data)
       })
